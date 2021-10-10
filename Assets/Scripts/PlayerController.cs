@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 1.5f;
     public float speedBoostEff = 2f;
     public float speedBoostDuration = 2f;
+    public float healingEff = 0.3f;
 
     //Kinematics
     Rigidbody rb;
@@ -133,6 +134,20 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("HealthUp"))
         {
             Destroy(other.gameObject);
+            if (currentHP + healingEff * maxHP <= maxHP)
+            {
+                currentHP = currentHP + healingEff * maxHP;
+            }
+            else
+            {
+                currentHP = maxHP;
+            }
+        }
+
+        if (other.gameObject.CompareTag("Projectile"))
+        {
+            Destroy(other.gameObject);
+            currentHP -= ShootingSystem.damage;
         }
     }
 }
