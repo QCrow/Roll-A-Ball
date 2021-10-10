@@ -15,14 +15,16 @@ public class ShootingSystem : MonoBehaviour
 
     List<GameObject> m_lastProjectiles = new List<GameObject>();
     float m_fireTimer = 0.0f;
+    
 
 
     // Update is called once per frame
     void Update()
     {
+        Vector3 m_target2D = new Vector3(target.transform.position.x, 0.5f, target.transform.position.z);
         if (beam && m_lastProjectiles.Count <= 0)
         {
-            float angle = Quaternion.Angle(transform.rotation, Quaternion.LookRotation(target.transform.position - transform.position));
+            float angle = Quaternion.Angle(transform.rotation, Quaternion.LookRotation(m_target2D - transform.position));
 
             if (angle< fieldOfView)
             {
@@ -31,7 +33,7 @@ public class ShootingSystem : MonoBehaviour
         }
         else if (beam && m_lastProjectiles.Count >0)
         {
-            float angle = Quaternion.Angle(transform.rotation, Quaternion.LookRotation(target.transform.position - transform.position));
+            float angle = Quaternion.Angle(transform.rotation, Quaternion.LookRotation(m_target2D - transform.position));
 
             if (angle > fieldOfView)
             {
@@ -50,7 +52,7 @@ public class ShootingSystem : MonoBehaviour
 
             if (m_fireTimer >= fireRate)
             {
-                float angle = Quaternion.Angle(transform.rotation, Quaternion.LookRotation(target.transform.position - transform.position));
+                float angle = Quaternion.Angle(transform.rotation, Quaternion.LookRotation(m_target2D - transform.position));
                 if (angle < fieldOfView)
                 {
                     SpawnProjectiles();
