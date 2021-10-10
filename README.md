@@ -10,17 +10,28 @@ the turrets while dodging the bullets for as long as you can:)
 All implemented features are:
 
 Basic features (asked in the submission):
+
 Respawn
+
 Random rotation for exp cubes
+
 Gazing rotation for power ups
+
 Speedboost (in form of power up pick up)
+
+
 
 Extra features implemented:
 All related sprites except rectangle HP bar (including unused skills sprites), refer to sprites folder if needed (and drive link in submission) - Yi
+
 Jump - Yi
+
 Turret: including tracking, projectile generation, and projectile motion - Steven
+
 Player health, and HP bar - Yi
+
 Random spawning - pickups, powerups, turrets - Yi
+
 Shield - Steven
 
 If we have more time, we would like to at least implement the leveling feature at least, with some skills such as stopping time, flying, etc.
