@@ -17,7 +17,7 @@ public class NormalProjectile : BaseProjectile
         }
     }
 
-    public override void FireProjectile(GameObject launcher, GameObject target, int damage)
+    public override void FireProjectile(GameObject launcher, GameObject target, float damage)
     {
         if (launcher && target)
         {

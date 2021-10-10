@@ -5,7 +5,8 @@ using UnityEngine;
 public class ShootingSystem : MonoBehaviour
 {
     public float fireRate;
-    public static int damage;
+    public float damage;
+    public static float projectileDamage;
     public float fieldOfView;
     public bool beam;
     public GameObject projectile;
@@ -15,8 +16,11 @@ public class ShootingSystem : MonoBehaviour
 
     List<GameObject> m_lastProjectiles = new List<GameObject>();
     float m_fireTimer = 0.0f;
-    
 
+    private void Start()
+    {
+        projectileDamage = damage;
+    }
 
     // Update is called once per frame
     void Update()
@@ -82,6 +86,4 @@ public class ShootingSystem : MonoBehaviour
             }
         }
     }
-
-    
 }

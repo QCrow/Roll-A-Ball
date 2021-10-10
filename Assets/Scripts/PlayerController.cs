@@ -147,7 +147,7 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Projectile"))
         {
             Destroy(other.gameObject);
-            currentHP -= ShootingSystem.damage;
+            currentHP -= ShootingSystem.projectileDamage;
         }
     }
 }
