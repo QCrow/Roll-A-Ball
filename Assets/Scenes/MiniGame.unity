@@ -631,7 +631,6 @@ GameObject:
   - component: {fileID: 1360971213}
   - component: {fileID: 1360971212}
   - component: {fileID: 1360971211}
-  - component: {fileID: 1360971215}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Untagged
@@ -714,29 +713,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1360971215
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1360971210}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8372071a5c8200643b124756c6bcb678, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1658742463}
-  blueExp: {fileID: 1285597501549809244, guid: 7796ec22b221c6042a9b2c1b35f72459, type: 3}
-  purpleExp: {fileID: 1285597501549809244, guid: fd1ab5db8f910dc41b5b26e11b39f1d4,
-    type: 3}
-  yellowExp: {fileID: 1285597501549809244, guid: 5299d77eadd819a4fb87d52262e3d2b5,
-    type: 3}
-  speedBoost: {fileID: 6371150188008579384, guid: 4b3a4349b8ee9be49854cb78e720e5b4,
-    type: 3}
-  shield: {fileID: 6371150188008579384, guid: c4c1284d4babead478559e05329cb4d9, type: 3}
-  lifePotion: {fileID: 6371150188008579384, guid: 81a6807b7780be1488bb010a84818ee5,
-    type: 3}
 --- !u!1 &1658742463
 GameObject:
   m_ObjectHideFlags: 0
@@ -896,10 +872,18 @@ MonoBehaviour:
   speed: 5
   maxHP: 100
   currentHP: 0
-  jumpForce: 2
-  speedBoostEff: 2
+  blueExp: {fileID: 1285597501549809244, guid: 7796ec22b221c6042a9b2c1b35f72459, type: 3}
+  purpleExp: {fileID: 1285597501549809244, guid: fd1ab5db8f910dc41b5b26e11b39f1d4,
+    type: 3}
+  yellowExp: {fileID: 1285597501549809244, guid: 5299d77eadd819a4fb87d52262e3d2b5,
+    type: 3}
+  speedBoost: {fileID: 6371150188008579384, guid: 4b3a4349b8ee9be49854cb78e720e5b4,
+    type: 3}
+  shield: {fileID: 6371150188008579384, guid: c4c1284d4babead478559e05329cb4d9, type: 3}
+  lifePotion: {fileID: 6371150188008579384, guid: 81a6807b7780be1488bb010a84818ee5,
+    type: 3}
   speedBoostDuration: 2
-  healingEff: 0.3
+  speedBoostPercent: 2
   speedBoosted: 0
 --- !u!114 &1658742471
 MonoBehaviour:

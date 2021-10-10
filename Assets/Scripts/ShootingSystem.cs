@@ -5,7 +5,7 @@ using UnityEngine;
 public class ShootingSystem : MonoBehaviour
 {
     public float fireRate;
-    public static int damage;
+    public int damage;
     public float fieldOfView;
     public bool beam;
     public GameObject projectile;

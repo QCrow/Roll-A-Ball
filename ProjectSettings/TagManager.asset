@@ -7,9 +7,6 @@ TagManager:
   - PickUp
   - SpeedBoost
   - Exp
-  - HealthUp
-  - ShieldUp
-  - Projectile
   layers:
   - Default
   - TransparentFX
