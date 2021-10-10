@@ -6,12 +6,13 @@ using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
-    public GameObject player;
-
     //Player Stats
     public float speed = 10;
     public float maxHP = 100f;
     public float currentHP;
+    public float jumpForce = 1.5f;
+    public float speedBoostEff = 2f;
+    public float speedBoostDuration = 2f;
 
     //Kinematics
     Rigidbody rb;
@@ -20,21 +21,16 @@ public class PlayerController : MonoBehaviour
 
     //Jump
     Vector3 jump;
-    public float jumpForce = 1.5f;
     bool jumping;
 
-    //Speed boost parameters
-    public float speedBoostDuration = 2f;
-    public float speedBoostPercent = 2f;
-    public bool speedBoosted = false;
+    private float speedBoostPercent;
+    [HideInInspector] public bool speedBoosted = false;
     float speedBoostTime;
     
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-
-
         currentHP = maxHP;
     }
 
@@ -46,7 +42,9 @@ public class PlayerController : MonoBehaviour
         movementX = movementVector.x;
         movementY = movementVector.y;
     }
+    
 
+    //Jumping Related Methods
     void OnJump()
     {
         if (!jumping)
@@ -65,6 +63,8 @@ public class PlayerController : MonoBehaviour
         jumping = true;
         jump = new Vector3(0f,0f,0f);
     }
+
+
 
     void Update()
     {
@@ -87,19 +87,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //Kinematics
     void FixedUpdate()
     {
+        Vector3 movement = new Vector3(movementX, 0.0f, movementY) * speedBoostPercent;
+        rb.AddForce(movement * speed * speedBoostPercent);
+        rb.AddForce(jump * jumpForce, ForceMode.Impulse);
         if (!speedBoosted)
         {
-            Vector3 movement = new Vector3(movementX, 0.0f, movementY);
-            rb.AddForce(movement * speed);
+            speedBoostPercent = 1f;
         }
-        if (speedBoosted)
-        {
-            Vector3 movement = new Vector3(movementX, 0.0f, movementY) * speedBoostPercent;
-            rb.AddForce(movement * speed * speedBoostPercent);
-        }
-        rb.AddForce(jump * jumpForce, ForceMode.Impulse);
     }
 
     
@@ -119,6 +116,7 @@ public class PlayerController : MonoBehaviour
             {
                 speedBoosted = true;
                 speedBoostTime = speedBoostDuration;
+                speedBoostPercent = speedBoostEff;
             }
 
             if (speedBoosted)
