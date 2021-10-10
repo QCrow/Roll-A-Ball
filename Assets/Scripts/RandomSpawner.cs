@@ -16,11 +16,11 @@ public class RandomSpawner : MonoBehaviour
     GameObject[] powerUps;
 
     //Spawns parameters
-    float turretTimer = 5f;
+    float turretTimer = 9f;
     public static int turretCount = 0;
-    float blueExpTimer = 1f;
-    float purpleExpTimer = 3f;
-    float yellowExpTimer = 10f;
+    float blueExpTimer = 2f;
+    float purpleExpTimer = 6f;
+    float yellowExpTimer = 15f;
     float powerUpTimer = 8f;
 
     // Start is called before the first frame update
