@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class ShootingSystem : MonoBehaviour
 {
-    public float fireRate;
-    public float damage;
+    public float fireRate = 0.5f;
+    public float damage = 20f;
     public static float projectileDamage;
-    public float fieldOfView;
-    public bool beam;
+    public float fieldOfView = 10f;
+    public bool beam = false;
     public GameObject projectile;
-    public GameObject target;
+    private GameObject target;
     public List<GameObject> projectileSpawns;
 
 
@@ -20,6 +20,7 @@ public class ShootingSystem : MonoBehaviour
     private void Start()
     {
         projectileDamage = damage;
+        target = GameObject.Find("Player");
     }
 
     // Update is called once per frame

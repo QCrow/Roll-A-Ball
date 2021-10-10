@@ -6,6 +6,7 @@ public class RandomSpawner : MonoBehaviour
 {
     //Game Objects
     public GameObject player;
+    public GameObject turret;
     public GameObject blueExp;
     public GameObject purpleExp;
     public GameObject yellowExp;
@@ -15,6 +16,8 @@ public class RandomSpawner : MonoBehaviour
     GameObject[] powerUps;
 
     //Spawns parameters
+    float turretTimer = 5f;
+    public static int turretCount = 0;
     float blueExpTimer = 1f;
     float purpleExpTimer = 3f;
     float yellowExpTimer = 10f;
@@ -24,6 +27,7 @@ public class RandomSpawner : MonoBehaviour
     void Start()
     {
         powerUps = new GameObject[] { speedBoost, shield, lifePotion };
+        player = GameObject.Find("Player");
     }
 
     void RandomSpawn(GameObject spawn)
@@ -52,7 +56,7 @@ public class RandomSpawner : MonoBehaviour
         {
             Vector3 spawnLocation = new Vector3(Random.Range(-9f, 9f), 0.5f, Random.Range(-9f, 9f));
 
-            if ((spawnLocation - this.transform.position).magnitude < 3)
+            if ((spawnLocation - player.transform.position).magnitude < 3)
             {
                 continue;
             }
@@ -64,11 +68,38 @@ public class RandomSpawner : MonoBehaviour
         }
     }
 
+    void TurretSpawn()
+    {
+        if (turretCount <= 2)
+        {
+            bool spawned = false;
+            while (!spawned)
+            {
+                Vector3 spawnLocation = new Vector3(Random.Range(-9f, 9f), 0.5f, Random.Range(-9f, 9f));
+
+                if ((spawnLocation - player.transform.position).magnitude < 3)
+                {
+                    continue;
+                }
+                else
+                {
+                    Instantiate(turret, spawnLocation, Quaternion.identity);
+                    spawned = true;
+                }
+            }
+            turretCount++;
+        }
+    }
 
     // Update is called once per frame
     void Update()
     {
         //Random Spawning
+        if (turretTimer <= 0)
+        {
+            TurretSpawn();
+            turretTimer = 5f;
+        }
         if (blueExpTimer <= 0)
         {
             RandomSpawn(blueExp);
@@ -89,7 +120,7 @@ public class RandomSpawner : MonoBehaviour
             SpawnPowerUp();
             powerUpTimer = 8f;
         }
-
+        turretTimer -= Time.deltaTime;
         blueExpTimer -= Time.deltaTime;
         purpleExpTimer -= Time.deltaTime;
         yellowExpTimer -= Time.deltaTime;
