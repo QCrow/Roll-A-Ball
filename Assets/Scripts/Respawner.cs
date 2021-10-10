@@ -22,6 +22,8 @@ public class Respawner : MonoBehaviour
             Physics.SyncTransforms();
             rb.velocity = new Vector3(0f, 0f, 0f);
             playercontroller.speedBoosted = false;
+            playercontroller.shieldUpDuration = 2.0f;
+            playercontroller.shieldUp = true;
         }
     }
 }
