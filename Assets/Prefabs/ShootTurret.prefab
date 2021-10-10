@@ -43,11 +43,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireRate: 0.2
-  damage: 5
   fieldOfView: 10
   beam: 0
-  projectile: {fileID: 0}
-  target: {fileID: 0}
+  projectile: {fileID: 7042300845106978973, guid: 74abdc1d05b2ebd4bacdbb1c952d4dbc,
+    type: 3}
+  target: {fileID: 2030264583765293057, guid: 8702466f94a6ee54ab0d4dc3f33f1805, type: 3}
   projectileSpawns:
   - {fileID: 1735874445}
 --- !u!1001 &7969930994625655515
@@ -66,11 +66,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2030264583765293057, guid: 8702466f94a6ee54ab0d4dc3f33f1805,
+        type: 3}
     - target: {fileID: 1205827198513740457, guid: 0cfc449c845d1f64a85210fd0bffc86d,
         type: 3}
       propertyPath: m_Name
-      value: Turret
+      value: ShootTurret
       objectReference: {fileID: 0}
     - target: {fileID: 1205827198513740461, guid: 0cfc449c845d1f64a85210fd0bffc86d,
         type: 3}
