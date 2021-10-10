@@ -29,6 +29,11 @@ public class PlayerController : MonoBehaviour
     float movementX;
     float movementY;
 
+    //Jump
+    Vector3 jump;
+    public float jumpForce = 1.5f;
+    bool jumping;
+
     //Speed boost parameters
     public float speedBoostDuration = 2f;
     public float speedBoostPercent = 2f;
@@ -95,6 +100,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    
     void OnMove(InputValue movementValue)
     {
         Vector2 movementVector = movementValue.Get<Vector2>();
@@ -102,7 +108,24 @@ public class PlayerController : MonoBehaviour
         movementY = movementVector.y;
     }
 
+    void OnJump()
+    {
+        if (!jumping)
+        {
+            jump = new Vector3(0.0f, 2.0f, 0.0f);
+        }
+    }
 
+    private void OnCollisionStay()
+    {
+        jumping = false;
+    }
+
+    private void OnCollisionExit()
+    {
+        jumping = true;
+        jump = new Vector3(0f,0f,0f);
+    }
 
     void Update()
     {
@@ -163,6 +186,7 @@ public class PlayerController : MonoBehaviour
             Vector3 movement = new Vector3(movementX, 0.0f, movementY) * speedBoostPercent;
             rb.AddForce(movement * speed * speedBoostPercent);
         }
+        rb.AddForce(jump * jumpForce, ForceMode.Impulse);
     }
 
     
