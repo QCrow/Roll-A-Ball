@@ -42,12 +42,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b2a53707641edc45bde38cf56aee195, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 0.2
+  fireRate: 0.5
+  damage: 5
   fieldOfView: 10
   beam: 0
   projectile: {fileID: 7042300845106978973, guid: 74abdc1d05b2ebd4bacdbb1c952d4dbc,
     type: 3}
-  target: {fileID: 2030264583765293057, guid: 8702466f94a6ee54ab0d4dc3f33f1805, type: 3}
   projectileSpawns:
   - {fileID: 1735874445}
 --- !u!1001 &7969930994625655515

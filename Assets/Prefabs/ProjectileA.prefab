@@ -120,4 +120,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 862d6f10f2b7a7f4fbe2d904f85ecd5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletDecayTimer: 1
+  bulletDecayTimer: 2

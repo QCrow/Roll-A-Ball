@@ -6,6 +6,8 @@ using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
+    public HealthBar healthbar;
+
     //Player Stats
     public float speed = 10;
     public float maxHP = 100f;   
@@ -14,7 +16,7 @@ public class PlayerController : MonoBehaviour
     public float speedBoostEff = 2f;
     public float speedBoostDuration = 2f;
     public float shieldUpDuration = 10f;
-    public float healingEff = 0.3f;
+    public float healingEff = 0.10f;
     public static int score;
 
     //Kinematics
@@ -30,13 +32,14 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public bool speedBoosted = false;
     [HideInInspector] public bool shieldUp = false;
     float speedBoostTime;
-    float shieldUpTime;
+    [HideInInspector] public float shieldUpTime;
     
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         currentHP = maxHP;
+        healthbar.SetMaxHealth(maxHP);
         score = 0;
     }
 
@@ -74,11 +77,14 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+
         //HP if out of map
         if (transform.position.y <= -1)
         {
             currentHP -= 100 * Time.deltaTime;
         }
+
+        healthbar.SetHealth(currentHP);
 
         //powerUps time track
         if (speedBoostTime <= 0)
@@ -125,18 +131,21 @@ public class PlayerController : MonoBehaviour
         {
             score += 3;
             Destroy(other.gameObject);
+            RandomSpawner.pickUpCount--;
         }
 
         if (other.gameObject.CompareTag("PickUpPurple"))
         {
-            score += 5;
+            score += 10;
             Destroy(other.gameObject);
+            RandomSpawner.pickUpCount--;
         }
 
         if (other.gameObject.CompareTag("PickUpYellow"))
         {
-            score += 10;
+            score += 25;
             Destroy(other.gameObject);
+            RandomSpawner.pickUpCount--;
         }
 
         if (other.gameObject.CompareTag("SpeedBoost"))

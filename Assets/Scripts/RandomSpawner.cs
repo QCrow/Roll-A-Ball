@@ -16,18 +16,32 @@ public class RandomSpawner : MonoBehaviour
     GameObject[] powerUps;
 
     //Spawns parameters
-    float turretTimer = 9f;
+
+    float turretTimer;
+    public float turretRate = 4f;
     public static int turretCount = 0;
-    float blueExpTimer = 2f;
-    float purpleExpTimer = 6f;
-    float yellowExpTimer = 15f;
-    float powerUpTimer = 8f;
+    float blueExpTimer;
+    float purpleExpTimer;
+    float yellowExpTimer;
+    float powerUpTimer;
+    public static int pickUpCount;
+    public float blueExpRate = 2f;
+    public float purpleExpRate = 4f;
+    public float yellowExpRate = 10f;
+    public float powerUpRate = 8f;
 
     // Start is called before the first frame update
     void Start()
     {
         powerUps = new GameObject[] { speedBoost, shield, lifePotion };
         player = GameObject.Find("Player");
+        pickUpCount = 0;
+        turretTimer = turretRate;
+        blueExpTimer = blueExpRate;
+        purpleExpTimer = purpleExpRate;
+        yellowExpTimer = yellowExpRate;
+        powerUpTimer = powerUpRate;
+
     }
 
     void RandomSpawn(GameObject spawn)
@@ -45,6 +59,7 @@ public class RandomSpawner : MonoBehaviour
             {
                 Instantiate(spawn, spawnLocation, Quaternion.identity);
                 spawned = true;
+                pickUpCount++;
             }
         }
     }
@@ -100,27 +115,27 @@ public class RandomSpawner : MonoBehaviour
         if (turretTimer <= 0)
         {
             TurretSpawn();
-            turretTimer = 5f;
+            turretTimer = turretRate * (Mathf.Pow(2f, turretCount/4));
         }
         if (blueExpTimer <= 0)
         {
             RandomSpawn(blueExp);
-            blueExpTimer = 1f;
+            blueExpTimer = blueExpRate * (Mathf.Pow(1.5f, pickUpCount / 20));
         }
         if (purpleExpTimer <= 0)
         {
             RandomSpawn(purpleExp);
-            purpleExpTimer = 3f;
+            purpleExpTimer = purpleExpRate * (Mathf.Pow(1.5f, pickUpCount / 20));
         }
         if (yellowExpTimer <= 0)
         {
             RandomSpawn(yellowExp);
-            yellowExpTimer = 10f;
+            yellowExpTimer = yellowExpRate * (Mathf.Pow(1.5f, pickUpCount / 20));
         }
         if (powerUpTimer <= 0)
         {
             SpawnPowerUp();
-            powerUpTimer = 8f;
+            powerUpTimer = powerUpRate;
         }
         turretTimer -= Time.deltaTime;
         blueExpTimer -= Time.deltaTime;
