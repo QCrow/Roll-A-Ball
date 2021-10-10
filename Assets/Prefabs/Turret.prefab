@@ -106,6 +106,7 @@ GameObject:
   - component: {fileID: 1205827198513740463}
   - component: {fileID: 1205827198513740462}
   - component: {fileID: 1205827198513740450}
+  - component: {fileID: -8202887911444324456}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Untagged
@@ -203,3 +204,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 200
   m_target: {fileID: 0}
+--- !u!114 &-8202887911444324456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1205827198513740457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b2a53707641edc45bde38cf56aee195, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireRate: 5
+  fieldOfView: 90
+  beam: 0
+  projectile: {fileID: 7042300845106978973, guid: 74abdc1d05b2ebd4bacdbb1c952d4dbc,
+    type: 3}
+  target: {fileID: 0}
+  projectileSpawns: []
