@@ -16,9 +16,11 @@ public class Trackingsystem : MonoBehaviour
     {
         if (m_target)
         {
-            if (m_lastKnownPosition != m_target.transform.position)
+            Vector3 m_target2D = new Vector3(m_target.transform.position.x, 0.5f, m_target.transform.position.z);
+            if (m_lastKnownPosition != m_target2D)
             {
-                m_lastKnownPosition = m_target.transform.position;
+
+                m_lastKnownPosition = m_target2D;
                 m_lookAtRotation = Quaternion.LookRotation(m_lastKnownPosition - transform.position);
 
             }
