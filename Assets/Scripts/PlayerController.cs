@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public float speedBoostDuration = 2f;
     public float shieldUpDuration = 10f;
     public float healingEff = 0.3f;
+    public static int score;
 
     //Kinematics
     Rigidbody rb;
@@ -36,6 +37,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         currentHP = maxHP;
+        score = 0;
     }
 
 
@@ -119,13 +121,27 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("PickUp"))
+        if (other.gameObject.CompareTag("PickUpBlue"))
         {
+            score += 3;
+            Destroy(other.gameObject);
+        }
+
+        if (other.gameObject.CompareTag("PickUpPurple"))
+        {
+            score += 5;
+            Destroy(other.gameObject);
+        }
+
+        if (other.gameObject.CompareTag("PickUpYellow"))
+        {
+            score += 10;
             Destroy(other.gameObject);
         }
 
         if (other.gameObject.CompareTag("SpeedBoost"))
         {
+            score += 15;
             Destroy(other.gameObject);
             if (!speedBoosted)
             {
@@ -142,6 +158,7 @@ public class PlayerController : MonoBehaviour
 
         if (other.gameObject.CompareTag("ShieldUp"))
         {
+            score += 20;
             Destroy(other.gameObject);
             if (!shieldUp)
             {
@@ -160,6 +177,7 @@ public class PlayerController : MonoBehaviour
 
         if (other.gameObject.CompareTag("HealthUp"))
         {
+            score += 10;
             Destroy(other.gameObject);
             if (currentHP + healingEff * maxHP <= maxHP)
             {

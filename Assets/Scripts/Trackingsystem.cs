@@ -51,6 +51,7 @@ public class Trackingsystem : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            PlayerController.score += 100;
             Destroy(gameObject);
             RandomSpawner.turretCount--;
         }

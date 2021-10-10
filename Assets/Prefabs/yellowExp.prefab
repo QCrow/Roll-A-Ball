@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1029993284522605839}
   m_Layer: 0
   m_Name: yellowExp
-  m_TagString: PickUp
+  m_TagString: PickUpYellow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

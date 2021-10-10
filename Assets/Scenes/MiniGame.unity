@@ -409,6 +409,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &498879327 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2030264583765293057, guid: 8702466f94a6ee54ab0d4dc3f33f1805,
+    type: 3}
+  m_PrefabInstance: {fileID: 1886076424}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &498879336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 498879327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73038cd06aceb2c4c954ce181cccdb49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myObject: {fileID: 2030264583765293180, guid: 8702466f94a6ee54ab0d4dc3f33f1805,
+    type: 3}
 --- !u!1 &701424568
 GameObject:
   m_ObjectHideFlags: 0
@@ -818,6 +838,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2030264583765293176, guid: 8702466f94a6ee54ab0d4dc3f33f1805,
+        type: 3}
+      propertyPath: shieldUpDuration
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2030264583765293178, guid: 8702466f94a6ee54ab0d4dc3f33f1805,
         type: 3}
