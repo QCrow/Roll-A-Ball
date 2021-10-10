@@ -8,11 +8,12 @@ public class PlayerController : MonoBehaviour
 {
     //Player Stats
     public float speed = 10;
-    public float maxHP = 100f;
-    public float currentHP;
+    public float maxHP = 100f;   
+    public float currentHP;   
     public float jumpForce = 1.5f;
     public float speedBoostEff = 2f;
     public float speedBoostDuration = 2f;
+    public float shieldUpDuration = 10f;
     public float healingEff = 0.3f;
 
     //Kinematics
@@ -26,7 +27,9 @@ public class PlayerController : MonoBehaviour
 
     private float speedBoostPercent;
     [HideInInspector] public bool speedBoosted = false;
+    [HideInInspector] public bool shieldUp = false;
     float speedBoostTime;
+    float shieldUpTime;
     
 
     void Start()
@@ -86,6 +89,17 @@ public class PlayerController : MonoBehaviour
         {
             speedBoostTime = speedBoostTime - Time.deltaTime;
         }
+
+        if (shieldUpTime <= 0)
+        {
+            shieldUp = false;
+            shieldUpTime = shieldUpDuration;
+        }
+
+        if (shieldUp)
+        {
+            shieldUpTime = shieldUpTime - Time.deltaTime;
+        }
     }
 
     //Kinematics
@@ -129,6 +143,19 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("ShieldUp"))
         {
             Destroy(other.gameObject);
+            if (!shieldUp)
+            {
+                shieldUp = true;
+                shieldUpTime = shieldUpDuration;
+            }
+
+            if (shieldUp)
+            {
+                if (other.gameObject.CompareTag("Projectile"))
+                {
+                    Destroy(other.gameObject);
+                }
+            }
         }
 
         if (other.gameObject.CompareTag("HealthUp"))
@@ -144,10 +171,14 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (other.gameObject.CompareTag("Projectile"))
+        if (!shieldUp)
         {
-            Destroy(other.gameObject);
-            currentHP -= ShootingSystem.projectileDamage;
+            if (other.gameObject.CompareTag("Projectile"))
+            {
+                Destroy(other.gameObject);
+                currentHP -= ShootingSystem.projectileDamage;
+            }
         }
+       
     }
 }
