@@ -50,8 +50,7 @@ public class Trackingsystem : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
-        {
-            PlayerController.score += 100;
+        {            
             Destroy(gameObject);
             RandomSpawner.turretCount--;
         }

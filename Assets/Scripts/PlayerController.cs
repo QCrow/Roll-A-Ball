@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
         movementY = movementVector.y;
     }
 
-    void Setscore()
+    public void Setscore()
     {
         scoreText.text = "score: " + score.ToString();
     }
@@ -140,33 +140,32 @@ public class PlayerController : MonoBehaviour
         {
             score += 3;
             Destroy(other.gameObject);
-<<<<<<< Updated upstream
+
             RandomSpawner.pickUpCount--;
-=======
+
             Setscore();
->>>>>>> Stashed changes
+
         }
 
         if (other.gameObject.CompareTag("PickUpPurple"))
         {
             score += 10;
             Destroy(other.gameObject);
-<<<<<<< Updated upstream
+
             RandomSpawner.pickUpCount--;
-=======
+
             Setscore();
->>>>>>> Stashed changes
+
         }
 
         if (other.gameObject.CompareTag("PickUpYellow"))
         {
             score += 25;
             Destroy(other.gameObject);
-<<<<<<< Updated upstream
+
             RandomSpawner.pickUpCount--;
-=======
+
             Setscore();
->>>>>>> Stashed changes
         }
 
         if (other.gameObject.CompareTag("SpeedBoost"))
@@ -222,8 +221,14 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        
-        if (other.gameObject.CompareTag("Projectile"))
+        if (other.gameObject.CompareTag("Turret")) 
+        {
+            score += 100;
+            Setscore();
+
+        }
+
+            if (other.gameObject.CompareTag("Projectile"))
         {
             Destroy(other.gameObject);
             if (!shieldUp)

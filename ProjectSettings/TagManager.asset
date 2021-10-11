@@ -10,6 +10,9 @@ TagManager:
   - HealthUp
   - ShieldUp
   - Projectile
+  - PickUpBlue
+  - PickUpPurple
+  - PickUpYellow
   layers:
   - Default
   - TransparentFX
