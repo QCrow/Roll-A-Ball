@@ -19,6 +19,10 @@ public class PlayerController : MonoBehaviour
     public float healingEff = 0.10f;
     public static int score;
     public TextMeshProUGUI scoreText;
+    public gameObject ShieldUpText;
+    public gameObject ShielddownText;
+    public gameObject SpeedBoostText;
+    public gameObject HealthUpText;
 
     //Kinematics
     Rigidbody rb;
@@ -43,6 +47,7 @@ public class PlayerController : MonoBehaviour
         healthbar.SetMaxHealth(maxHP);
         score = 0;
         Setscore();
+        ShieldUpText.
 
 
     }
