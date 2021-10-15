@@ -18,6 +18,11 @@ public class PlayerController : MonoBehaviour
     public float shieldUpDuration = 10f;
     public float healingEff = 0.10f;
     public static int score;
+    public TextMeshProUGUI scoreText;
+    public gameObject ShieldUpText;
+    public gameObject ShielddownText;
+    public gameObject SpeedBoostText;
+    public gameObject HealthUpText;
 
     //Kinematics
     Rigidbody rb;
@@ -41,6 +46,10 @@ public class PlayerController : MonoBehaviour
         currentHP = maxHP;
         healthbar.SetMaxHealth(maxHP);
         score = 0;
+        Setscore();
+        ShieldUpText.
+
+
     }
 
 
@@ -50,6 +59,11 @@ public class PlayerController : MonoBehaviour
         Vector2 movementVector = movementValue.Get<Vector2>();
         movementX = movementVector.x;
         movementY = movementVector.y;
+    }
+
+    public void Setscore()
+    {
+        scoreText.text = "score: " + score.ToString();
     }
     
 
@@ -131,27 +145,39 @@ public class PlayerController : MonoBehaviour
         {
             score += 3;
             Destroy(other.gameObject);
+
             RandomSpawner.pickUpCount--;
+
+            Setscore();
+
         }
 
         if (other.gameObject.CompareTag("PickUpPurple"))
         {
             score += 10;
             Destroy(other.gameObject);
+
             RandomSpawner.pickUpCount--;
+
+            Setscore();
+
         }
 
         if (other.gameObject.CompareTag("PickUpYellow"))
         {
             score += 25;
             Destroy(other.gameObject);
+
             RandomSpawner.pickUpCount--;
+
+            Setscore();
         }
 
         if (other.gameObject.CompareTag("SpeedBoost"))
         {
             score += 15;
             Destroy(other.gameObject);
+            Setscore();
             if (!speedBoosted)
             {
                 speedBoosted = true;
@@ -168,6 +194,7 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("ShieldUp"))
         {
             score += 20;
+            Setscore();
             Destroy(other.gameObject);
             if (!shieldUp)
             {
@@ -187,6 +214,7 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("HealthUp"))
         {
             score += 10;
+            Setscore();
             Destroy(other.gameObject);
             if (currentHP + healingEff * maxHP <= maxHP)
             {
@@ -198,8 +226,14 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        
-        if (other.gameObject.CompareTag("Projectile"))
+        if (other.gameObject.CompareTag("Turret")) 
+        {
+            score += 100;
+            Setscore();
+
+        }
+
+            if (other.gameObject.CompareTag("Projectile"))
         {
             Destroy(other.gameObject);
             if (!shieldUp)

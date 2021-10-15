@@ -73,6 +73,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShootTurret
       objectReference: {fileID: 0}
+    - target: {fileID: 1205827198513740457, guid: 0cfc449c845d1f64a85210fd0bffc86d,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 1205827198513740461, guid: 0cfc449c845d1f64a85210fd0bffc86d,
         type: 3}
       propertyPath: m_RootOrder
